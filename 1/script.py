@@ -10,6 +10,7 @@ f.close()
 
 for a in numbers:
 	for b in numbers:
-		if((a + b) == 2020):
-			print(str(a) + " + " + str(b) + " = " + str(a+b))
-			print(str(a) + "*" + str(b) + " =  " + str(a*b))
+		for c in numbers:
+			if((a + b + c) == 2020):
+				print(str(a) + " + " + str(b) + " + "  + str(c)  + " = " + str(a+b+c))
+				print(str(a) + "*" + str(b) + "*" + str(c) +  " =  " + str(a*b*c))
