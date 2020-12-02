@@ -10,25 +10,32 @@ def countChar(c, s):
 			count = count + 1
 	return count
 
+def isLetter(index, c, s):
+	if(s[index - 1] == c):
+		return True
+	return False
+
 passwords = []
-minimal = []
-maximal = []
+pos1 = []
+pos2 = []
 letter = []
 
 # read the passwords from the file:
 f = open('data.txt')
 for line in f.readlines():
 	passwords.append(findBetween(line, ': ', '\n'))
-	maximal.append(int(findBetween(line, '-', ' ')))
+	pos2.append(int(findBetween(line, '-', ' ')))
 	letter.append(findBetween(line, ' ', ':'))
-	minimal.append(int(line.split('-')[0]))
+	pos1.append(int(line.split('-')[0]))
 f.close()
 
 numberOfValids = 0
 
 for i in range(len(passwords)):
-	numberOfLetter = countChar(letter[i], passwords[i])
-	if((numberOfLetter >= minimal[i]) and (numberOfLetter <= maximal[i])):
+	first = isLetter(pos1[i], letter[i], passwords[i])
+	second = isLetter(pos2[i], letter[i], passwords[i])
+	# hint: ^ is the exor operator in python
+	if(first ^ second):
 		numberOfValids = numberOfValids + 1
 
 print(numberOfValids)
