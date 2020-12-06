@@ -10,9 +10,7 @@ for line in f.readlines():
 f.close()
 
 ugly_lines.append('')
-
 groups = []
-
 s = ''
 
 for line in ugly_lines:
@@ -24,9 +22,7 @@ for line in ugly_lines:
 		s = s + line + ' '
 
 print(groups)
-
 chars = list(string.ascii_lowercase)
-
 count = 0
 
 for group in groups:
