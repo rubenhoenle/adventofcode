@@ -24,18 +24,13 @@ for line in lines:
     if(direction == 'F'):
         direction = facing
     elif(direction == 'L'):
-        print('L', value)
-        print('before ', facing)
         deg = int(value / 90)
         idx = directions.index(facing)
         direction = directions[idx - deg]
         facing = direction
         value = 0
-        print('after', facing)
 
     elif(direction == 'R'):
-        print('R', value)
-        print('before ', facing)
         deg = int(value / 90)
         idx = directions.index(facing)
         idx += deg
@@ -44,7 +39,6 @@ for line in lines:
         direction = directions[idx]
         facing = direction
         value = 0
-        print('after', facing)
 
     if(direction == 'N'):
         north += value
