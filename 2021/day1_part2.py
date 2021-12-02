@@ -2,7 +2,7 @@
 
 numbers = []
 
-with open("input.txt") as inputFile:
+with open("./input/1.txt") as inputFile:
     numbers = list(map(int, inputFile.readlines()))
 
 count = 0
