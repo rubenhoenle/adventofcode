@@ -63,10 +63,18 @@ while(i <= len(lines)):
     i += 6
 
 # play the bingo
-for number in numbers:
-    for board in boards:
-        board = mark_numbers_on_board(board, number)
-        if(check_if_board_won_horizontal(board) or check_if_board_won_vertical(board)):
-            print(calc_score_for_board(board, number))
-            quit()
-        
+while (len(boards) >= 1):
+    for number in numbers:
+        stop = False
+        for board in boards:
+            board = mark_numbers_on_board(board, number)
+            if(check_if_board_won_horizontal(board) or check_if_board_won_vertical(board)):
+                last_winning_board = board
+                last_winning_number = number
+                boards.remove(board)
+                stop = True
+                break
+        if(stop):
+            break
+
+print(calc_score_for_board(last_winning_board, last_winning_number))
