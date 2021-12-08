@@ -2,7 +2,7 @@
 
 import re
 import numpy as np
-from inputreader import InputReader
+from aoctools import InputReader
 
 # add a line from the given coordinates to the diagram
 def add_line(field, x1, x2, y1, y2):

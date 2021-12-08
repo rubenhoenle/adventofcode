@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from inputreader import InputReader
+from aoctools import InputReader
 
 debugging_output = False
 
