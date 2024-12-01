@@ -27,3 +27,11 @@ func ReadLinesFromFile(filepath string) []string {
 	readFile.Close()
 	return lines
 }
+
+func SliceSum(slice []int) int {
+	sum := 0
+	for _, val := range slice {
+		sum += val
+	}
+	return sum
+}
