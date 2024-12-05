@@ -41,14 +41,17 @@ func sumMultiplyStatements(multiplyStmts []string) (int, error) {
 	return sum, nil
 }
 
-func part1(inputLine string) (int, error) {
-	multiplyStatements := getMultiplyStatements(inputLine)
+func part1(input []string) (int, error) {
+	multiplyStatements := []string{}
+	for _, line := range input {
+		multiplyStatements = append(multiplyStatements, getMultiplyStatements(line)...)
+	}
 	return sumMultiplyStatements(multiplyStatements)
 }
 
 func main() {
-	inputLine := utils.ReadLinesFromFile("input/03.txt")[0]
+	input := utils.ReadLinesFromFile("input/03.txt")
 
-	part1Result, _ := part1(inputLine)
+	part1Result, _ := part1(input)
 	fmt.Printf("Part 1: %d\n", part1Result)
 }
