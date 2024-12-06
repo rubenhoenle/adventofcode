@@ -5,10 +5,10 @@ import (
 	"testing"
 )
 
-func TestGetMultiplyStatements(t *testing.T) {
+func TestGetMultiplyStatementsPart1(t *testing.T) {
 	input := "xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))"
 
-	multiplyStatements := getMultiplyStatements(input)
+	multiplyStatements := getMultiplyStatementsPart1(input)
 
 	assert.Equal(t, 4, len(multiplyStatements))
 
@@ -40,8 +40,15 @@ func TestSumMultiplyStatements(t *testing.T) {
 }
 
 func TestPart1Example(t *testing.T) {
-	input := []string{"xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))"}
+	input := "xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))"
 
 	res, _ := part1(input)
 	assert.Equal(t, 161, res)
+}
+
+func TestPart2Example(t *testing.T) {
+	input := "xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))"
+
+	res := part2(input)
+	assert.Equal(t, 48, res)
 }
