@@ -34,7 +34,7 @@ func checkReportSafety(report []int) bool {
 		return false
 	}
 
-	for idx, _ := range report {
+	for idx := range report {
 		if idx == 0 {
 			continue
 		}
@@ -44,6 +44,29 @@ func checkReportSafety(report []int) bool {
 		}
 	}
 	return true
+}
+
+func part2(reports [][]int) int {
+	count := 0
+	for _, report := range reports {
+		if checkReportSafety(report) {
+			count++
+			continue
+		}
+
+		for idx := range report {
+			copiedReport := make([]int, len(report))
+			copy(copiedReport, report)
+			copiedReport = append(copiedReport[:idx], copiedReport[idx+1:]...)
+			safe := checkReportSafety(copiedReport)
+
+			if safe {
+				count++
+				break
+			}
+		}
+	}
+	return count
 }
 
 func countSafeReports(reports [][]int) int {
@@ -62,4 +85,7 @@ func main() {
 
 	part1 := countSafeReports(reports)
 	fmt.Printf("Part 1: %d\n", part1)
+
+	part2 := part2(reports)
+	fmt.Printf("Part 2: %d\n", part2)
 }
