@@ -90,6 +90,9 @@ func main() {
 	stones, _ := parseStoneInput(input)
 	stoneMap := getStonesMap(stones)
 
-	part1 := blinkNTimes(25, stoneMap)
+	part1 := utils.SumMapValues(blinkNTimes(25, stoneMap))
 	fmt.Printf("Part 1: %d\n", part1)
+
+	part2 := utils.SumMapValues(blinkNTimes(75, stoneMap))
+	fmt.Printf("Part 2: %d\n", part2)
 }
