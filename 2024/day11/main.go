@@ -48,30 +48,24 @@ func blinkNTimes(n int, stoneMap map[int]int) map[int]int {
 		nextMap := map[int]int{}
 
 		for stoneVal, stoneCount := range currentMap {
+			var keys []int
 			if stoneVal == 0 {
-				// TODO maybe we can find a way to get rid of the duplicated code here
-				if _, ok := nextMap[1]; ok {
-					nextMap[1] += stoneCount
-				} else {
-					nextMap[1] = stoneCount
-				}
+				keys = []int{1}
 			} else if len(strconv.Itoa(stoneVal))%2 == 0 {
 				stoneValStr := strconv.Itoa(stoneVal)
 				leftHalf, _ := strconv.Atoi(stoneValStr[:len(stoneValStr)/2])
 				rightHalf, _ := strconv.Atoi(stoneValStr[len(stoneValStr)/2:])
-				for _, half := range []int{leftHalf, rightHalf} {
-					if _, ok := nextMap[half]; ok {
-						nextMap[half] += stoneCount
-					} else {
-						nextMap[half] = stoneCount
-					}
-				}
+				keys = []int{leftHalf, rightHalf}
 			} else {
 				newVal := stoneVal * 2024
-				if _, ok := nextMap[newVal]; ok {
-					nextMap[newVal] += stoneCount
+				keys = []int{newVal}
+			}
+
+			for _, key := range keys {
+				if _, ok := nextMap[key]; ok {
+					nextMap[key] += stoneCount
 				} else {
-					nextMap[newVal] = stoneCount
+					nextMap[key] = stoneCount
 				}
 			}
 		}
