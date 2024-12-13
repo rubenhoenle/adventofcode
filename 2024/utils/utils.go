@@ -35,3 +35,11 @@ func SliceSum(slice []int) int {
 	}
 	return sum
 }
+
+func SumMapValues(input map[int]int) int {
+	sum := 0
+	for _, val := range input {
+		sum += val
+	}
+	return sum
+}
